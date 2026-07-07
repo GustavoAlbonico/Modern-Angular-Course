@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Product } from '../product';
@@ -14,4 +14,12 @@ export class ProductCard {
   //@Input({required: true}) product!: Product; // antigo
 
   readonly addButtonLabel = input('Add to Cart');
+
+  readonly addToCart = output<Product>();
+
+  protected onAddToCard() {
+    this.addToCart.emit(this.product());
+  }
+
+
 }

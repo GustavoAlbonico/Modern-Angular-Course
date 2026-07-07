@@ -50,6 +50,10 @@ export class ProductsGrid {
     
   });
 
+  protected onAddToCard(product: Product) {
+    
+  }
+
   // protected clearSearch() {
   //   this.searchTerm.set('');
   // }
