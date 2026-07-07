@@ -39,12 +39,23 @@ export class ProductsGrid {
     }
   ]);
 
-  protected clearSearch() {
-    this.searchTerm.set('');
-  }
+  protected readonly filteredProducts = computed(() => {
+    const term = this.searchTerm().toLocaleLowerCase().trim();
+    if (!term) return this.products();
 
-  protected trimSearch() {
-    this.searchTerm.update((value) => value.trim())
-  }
+    return this.products().filter((product) =>
+      product.name.toLocaleLowerCase().includes(term) ||
+      product.name.toLocaleLowerCase().includes(term)
+    );
+    
+  });
+
+  // protected clearSearch() {
+  //   this.searchTerm.set('');
+  // }
+
+  // protected trimSearch() {
+  //   this.searchTerm.update((value) => value.trim())
+  // }
 
 }
